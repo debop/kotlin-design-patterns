@@ -339,6 +339,11 @@ subprojects {
         testImplementation(Libraries.kotlin_test)
         testImplementation(Libraries.kotlin_test_junit5)
 
+        if (!project.name.contains("kommons")) {
+            api(project(":kommons-logging"))
+            testApi(project(":kommons-junit-jupiter"))
+        }
+
         api(Libraries.slf4j_api)
         testApi(Libraries.logback)
         testApi(Libraries.zerolog_core)

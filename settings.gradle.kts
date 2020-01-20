@@ -18,3 +18,10 @@ include("abstract-factory")
 include("acycle-visitor")
 include("adaptor")
 include("ambassador")
+
+include("api-gateway")
+include("api-gateway:api-gateway-service")
+include("api-gateway:image-microservice")
+include("api-gateway:price-microservice")
+
+include("async-method-invocation")
