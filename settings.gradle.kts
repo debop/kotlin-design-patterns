@@ -28,3 +28,4 @@ include("async-method-invocation")
 
 include("balking")
 include("bridge")
+include("builder")
