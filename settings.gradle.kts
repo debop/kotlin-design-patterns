@@ -25,3 +25,5 @@ include("api-gateway:image-microservice")
 include("api-gateway:price-microservice")
 
 include("async-method-invocation")
+
+include("balking")
