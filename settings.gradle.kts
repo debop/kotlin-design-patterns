@@ -11,7 +11,9 @@ pluginManagement {
 rootProject.name = "kotlin-design-patterns"
 
 include("kommons-logging")
+include("kommons-core")
 include("kommons-junit-jupiter")
+include("kommons-testcontainers")
 
 include("abstract-document")
 include("abstract-factory")
@@ -30,3 +32,5 @@ include("balking")
 include("bridge")
 include("builder")
 include("business-delegate")
+
+include("caching")

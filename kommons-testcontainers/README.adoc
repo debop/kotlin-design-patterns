@@ -1,0 +1,87 @@
+= kommons-testcontainers
+
+TestContainers 라이브러리를 이용하여 다양한 서버를 로컬에서 실행할 수 있게 합니다.
+
+== Servers
+
+* JDBC Database
+** MariaDB
+** MySQL
+** PostgreSQL
+
+* NoSQL Repository
+** ArangoDB
+** MongoDB
+** Cassandra
+** ElasticSearch
+** http://elassandra.io[Elassandra] (Elassticsearch + Cassandra)
+** InfluxDB
+
+* Memory DB
+** Redis
+** Memcached
+** Hazelcast
+** Apache Ignite
+
+* Message Queue
+** Kafka
+** Pulsar
+** Rabbitmq
+
+* AWS
+** S3
+** DynamoDB
+** Dynalite (Local engine for DynamoDB)
+
+* Others
+** Zipkin
+
+
+=== Usage
+
+테스트를 위해 일시적으로 원하는 서버를 Docker를 이용하여 실행할 수 있습니다.
+
+
+==== 기본 사용법
+
+[source, kotlin, linenums]
+.Launch server
+----
+// Launch MySQL Server
+val mysqlServer = MySQLServer().apply { start() }
+
+// Get Datasource
+val dataSource = mysqlServer.getDataSource()
+----
+
+[source, kotlin, linenums]
+.Laucn server with default port
+----
+val mysql = MySQLServer(useDefaultPort=true).apply { start() }
+----
+
+실행하면 로그에 다음과 같이 서버의 정보를 보여주면, System property로 설정됩니다.
+Spring Framework 에서 사용할 때에는 property value에 `${testcontainers.redis.host}`, `${testcontainers.redis.port}` 로 설정하면 동적정보를 활용할 수 있습니다.
+
+[source,text,linenums]
+----
+2019-10-28 15:55:21,319 INFO  [Test worker] io.kommons.testcontainers.GenericServer:
+   Start S3mock Server:
+       testcontainers.s3mock.host = localhost
+       testcontainers.s3mock.port = 32977
+       testcontainers.s3mock.url = http://localhost:32977
+----
+
+==== 기본 Port 설정
+
+`useDefaultPort=true` 를 수행하면, Docker에서 동적으로 할당하는 Port가 아닌 Server의 기본 Port를 사용할 수 있습니다.
+
+[source, kotlin, linenums]
+.Use default port
+----
+// Launch server
+val redisServer = RedisServer(useDefaultPort=true).apply { start() }
+
+// Connect to server
+val redisson = Redisson.create(redisServer.url)  // url is "redis://localhost:6379"
+----
