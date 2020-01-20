@@ -1,0 +1,64 @@
+== kommons-junit-jupiter
+:toc:
+:toclevels: 3
+
+== 개요
+
+JUnit 5 를 위한 다양한 Extensions를 제공합니다.
+
+== Extensions
+
+=== BenchmarkExtension
+
+`BenchmarkExtension` 은 테스트 메소드의 수행 시각을 측정할 수 있도록 합니다.
+
+[source,kotlin,linenum]
+.BenchmarkExtension example
+----
+@ExtendWith(BenchmarkExtension::class)
+class FooTest {
+    @Test
+    fun `some test case`() {
+        Thread.sleep(10)
+    }
+}
+----
+
+== TempFolderExtension
+
+`TempFolderExtension` 은 테스트 시에만 사용하는 임시 폴더를 제공합니다.
+
+[source,kotlin,linenum]
+.TempFolderExtension example
+----
+@TempFolderTest
+@TestInstance(Lifecycle.PER_CLASS)
+class TempFolderExtensionBeforeAllTest {
+
+    lateinit var tempFolder: TempFolder
+
+    @BeforeAll
+    fun beforeAll(tempFolder: TempFolder) {
+        this.tempFolder = tempFolder
+    }
+
+    @AfterAll
+    fun afterAll() {
+        val createdFiles = Files.list(tempFolder.root.toPath()).map { it.toFile().name }.toList()
+        createdFiles.size shouldEqualTo 2
+        createdFiles shouldContainAll listOf("foo.txt", "bar")
+    }
+
+    @Test
+    fun `임시 파일 생성`() {
+        val file = tempFolder.createFile("foo.txt")
+        file.exists().shouldBeTrue()
+    }
+
+    @Test
+    fun `임시 디렉토리 생성`() {
+        val dir = tempFolder.createDirectory("bar")
+        dir.exists().shouldBeTrue()
+    }
+}
+----
