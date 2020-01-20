@@ -1,0 +1,49 @@
+= kommons-logging
+
+Sfl4j Logging Framework를 Kotlin에서 쉽게 사용하기 위해 제공되는 라이브러리입니다.
+
+== 사용법
+
+kommons-logging 사용법은 slf4j와 같은 방식으로 logging을 수행합니다.
+추가적으로 Kotlin 언어의 lambda 방식으로 로그메시지를 생성할 수 있어, 성능부하를 최소화했습니다.
+
+
+=== 클래스의 로깅
+클래스 내부에서 로깅을 사용하기 위해서는 companion object를 `KLogging`으로부터 상속받으면 static한 logger를 사용할 수 있습니다.
+
+[source,kotlin,linenums]
+.Logger 정의 및 logger 사용 예
+----
+class SomeClass {
+
+    companion object: KLogging()                            <1>
+
+    fun someMethod(param1:String) {
+        try {
+            log.debug { "Some logging... param1=$param1" }  <2>
+        } catch(e:Exception) {
+            log.error(e) { "Fail to execute method. param1=$param1" } <3>
+        }
+    }
+}
+----
+<1> Define KotlinLogger
+<2> Write debug log message
+<3> Write error log message
+
+
+=== Package method에서 사용하기
+
+package method 에서 logging하기 위해서는 다음과 같이 log를 선언하시고, 사용하시면 됩니다.
+
+[source, kotlin, linenums]
+.Logger for package methods
+----
+private val log = loggerOf {}
+
+fun method1(arg1:String, arg2:String) {
+    log.debug { "method1 arg1=$arg1, arg2=$arg2" }
+    // Somthing to do
+}
+----
+
