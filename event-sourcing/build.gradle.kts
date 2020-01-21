@@ -1,0 +1,5 @@
+dependencies {
+
+    implementation(Libraries.gson)
+
+}

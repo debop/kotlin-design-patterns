@@ -48,3 +48,8 @@ include("data-transfer-object")
 include("decorator")
 include("delegation")
 include("dirty-flag")
+
+include("event-aggregator")
+include("event-asynchronous")
+include("event-sourcing")
+include("execute-around")

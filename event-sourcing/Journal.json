@@ -1,0 +1,41 @@
+{
+  "accountNo": 1,
+  "owner": "Daenerys Targaryen",
+  "isRealTime": true,
+  "sequenceId": 0,
+  "createdTime": 1579619613385,
+  "eventClassName": "AccountCreateEvent"
+}
+{
+  "accountNo": 2,
+  "owner": "Jon Snow",
+  "isRealTime": true,
+  "sequenceId": 1,
+  "createdTime": 1579619613523,
+  "eventClassName": "AccountCreateEvent"
+}
+{
+  "accountNo": 1,
+  "money": 100000,
+  "isRealTime": true,
+  "sequenceId": 2,
+  "createdTime": 1579619613528,
+  "eventClassName": "MoneyDepositEvent"
+}
+{
+  "accountNo": 2,
+  "money": 100,
+  "isRealTime": true,
+  "sequenceId": 3,
+  "createdTime": 1579619613529,
+  "eventClassName": "MoneyDepositEvent"
+}
+{
+  "money": 10000,
+  "accountNoFrom": 1,
+  "accountNoTo": 2,
+  "isRealTime": true,
+  "sequenceId": 4,
+  "createdTime": 1579619613531,
+  "eventClassName": "MoneyTransferEvent"
+}
