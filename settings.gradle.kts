@@ -53,3 +53,9 @@ include("event-aggregator")
 include("event-asynchronous")
 include("event-sourcing")
 include("execute-around")
+
+include("factory-method")
+
+include("guarded-suspension")
+
+include("lazy-loading")
