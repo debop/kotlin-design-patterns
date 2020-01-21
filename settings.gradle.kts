@@ -35,3 +35,4 @@ include("business-delegate")
 
 include("caching")
 include("callback")
+include("chain")
