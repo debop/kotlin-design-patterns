@@ -59,3 +59,14 @@ include("factory-method")
 include("guarded-suspension")
 
 include("lazy-loading")
+
+include("producer-consumer")
+
+include("singleton")
+include("state")
+include("strategy")
+
+include("template-method")
+include("throttling")
+
+include("visitor")
