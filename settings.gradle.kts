@@ -53,6 +53,7 @@ include("event-aggregator")
 include("event-asynchronous")
 include("event-sourcing")
 include("execute-around")
+include("extension-objects")
 
 include("factory-method")
 
