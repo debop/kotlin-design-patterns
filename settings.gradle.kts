@@ -57,6 +57,7 @@ include("extension-objects")
 
 include("factory-method")
 include("facade")
+include("factory-kit")
 
 include("guarded-suspension")
 
