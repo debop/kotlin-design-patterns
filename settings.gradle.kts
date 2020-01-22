@@ -56,6 +56,7 @@ include("execute-around")
 include("extension-objects")
 
 include("factory-method")
+include("facade")
 
 include("guarded-suspension")
 
