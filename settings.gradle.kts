@@ -57,9 +57,10 @@ include("event-sourcing")
 include("execute-around")
 include("extension-objects")
 
-include("factory-method")
 include("facade")
 include("factory-kit")
+include("factory-method")
+include("feature-toggle")
 
 include("guarded-suspension")
 
