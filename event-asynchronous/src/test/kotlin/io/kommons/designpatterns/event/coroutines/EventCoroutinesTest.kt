@@ -33,7 +33,7 @@ class EventCoroutinesTest {
     @Test
     fun `fully coroutines events`() = runBlocking<Unit> {
         val manager = CoEventManager()
-        val eventTime = 2 // seconds
+        val eventTime = 1 // seconds
 
         val eventId1 = manager.createAsync(eventTime)
         val eventId2 = manager.createAsync(eventTime)
@@ -45,7 +45,7 @@ class EventCoroutinesTest {
         manager.start(eventId2)
         manager.start(eventId3)
 
-        delay(1)
+        // delay(1)
 
         manager.status(eventId1)
         manager.status(eventId2)

@@ -51,6 +51,8 @@ include("dirty-flag")
 
 include("event-aggregator")
 include("event-asynchronous")
+include("event-driven-architecture")
+include("event-queue")
 include("event-sourcing")
 include("execute-around")
 include("extension-objects")
