@@ -69,9 +69,10 @@ include("lazy-loading")
 include("producer-consumer")
 
 include("singleton")
-include("subclass-sandbox")
 include("state")
+include("step-builder")
 include("strategy")
+include("subclass-sandbox")
 
 include("template-method")
 include("throttling")
