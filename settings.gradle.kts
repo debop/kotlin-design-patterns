@@ -69,6 +69,7 @@ include("lazy-loading")
 include("producer-consumer")
 include("promise")
 
+include("semaphore")
 include("singleton")
 include("state")
 include("step-builder")

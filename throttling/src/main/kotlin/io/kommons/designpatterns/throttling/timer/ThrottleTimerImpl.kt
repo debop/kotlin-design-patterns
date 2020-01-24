@@ -20,7 +20,7 @@ class ThrottleTimerImpl(private val throttlePeriod: Duration,
         Timer(true).schedule(timerTask { callsCount.reset() }, 0L, throttlePeriod.toMillis())
     }
 
-    private fun timerTask(block: () -> Unit): TimerTask =
+    private inline fun timerTask(crossinline block: () -> Unit): TimerTask =
         object: TimerTask() {
             override fun run() {
                 block.invoke()

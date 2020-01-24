@@ -5,6 +5,8 @@ import io.kommons.logging.warn
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.Future
 import java.util.concurrent.TimeUnit
+import java.util.concurrent.locks.ReentrantLock
+import kotlin.concurrent.withLock
 
 /**
  * A really simplified implementation of future that allows completing it successfully with a value
@@ -18,7 +20,8 @@ open class PromiseSupport<T: Any>: Future<T> {
         private const val COMPLETED = 3
     }
 
-    private val lock = Object()
+    private val lock = ReentrantLock()
+    private val condition = lock.newCondition()
 
     @Volatile
     private var state: Int = RUNNING
@@ -28,16 +31,18 @@ open class PromiseSupport<T: Any>: Future<T> {
     open fun fulfill(value: T?) {
         this.value = value
         this.state = COMPLETED
-        synchronized(lock) {
-            lock.notifyAll()
+
+        lock.withLock {
+            condition.signalAll()
         }
     }
 
     open fun fulfillExceptionally(exception: Exception?) {
         this.exception = exception
         this.state = FAILED
-        synchronized(lock) {
-            lock.notifyAll()
+
+        lock.withLock {
+            condition.signalAll()
         }
     }
 
@@ -48,9 +53,9 @@ open class PromiseSupport<T: Any>: Future<T> {
     override fun isDone(): Boolean = state > RUNNING
 
     override fun get(): T? {
-        synchronized(lock) {
+        lock.withLock {
             while (state == RUNNING) {
-                lock.wait()
+                condition.await()
             }
         }
         if (state == COMPLETED) {
@@ -60,10 +65,10 @@ open class PromiseSupport<T: Any>: Future<T> {
     }
 
     override fun get(timeout: Long, unit: TimeUnit): T? {
-        synchronized(lock) {
+        lock.withLock {
             while (state == RUNNING) {
                 try {
-                    lock.wait(unit.toMillis(timeout))
+                    condition.await(timeout, unit)
                 } catch (e: InterruptedException) {
                     log.warn(e) { "Interrupted" }
                     Thread.currentThread().interrupt()

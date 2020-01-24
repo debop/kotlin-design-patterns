@@ -23,7 +23,7 @@ class B2BServiceTest {
         val timer: Throttler = throttller { }
         val service = B2BService(timer, callsCount)
 
-        (0..5).forEach {
+        repeat(6) {
             service.dummyCustomerApi(tenant)
         }
 

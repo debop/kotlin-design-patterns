@@ -9,7 +9,9 @@ import java.io.InputStreamReader
 import java.io.OutputStream
 import java.io.Serializable
 import java.net.URL
+import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.thread
+import kotlin.concurrent.withLock
 
 /**
  * [Runtime] 관련 정보
@@ -101,7 +103,10 @@ object Runtimex: KLogging() {
                                                   val output: OutputStream? = null,
                                                   val prefix: String? = null): Thread() {
 
-        private val lock = Object()
+        private val lock = ReentrantLock()
+        private val condition = lock.newCondition()
+
+        // private val lock = Object()
         private var end = false
 
         val prefixBytes: ByteArray get() = prefix?.let { prefix.toByteArray() } ?: ByteArray(0)
@@ -123,10 +128,14 @@ object Runtimex: KLogging() {
                 }
             }
 
-            synchronized(lock) {
+            lock.withLock {
                 end = true
-                lock.notifyAll()
+                condition.signalAll()
             }
+            //            synchronized(lock) {
+            //                end = true
+            //                lock.notifyAll()
+            //            }
         }
 
         /**
@@ -134,11 +143,16 @@ object Runtimex: KLogging() {
          */
         fun waitFor() {
             try {
-                synchronized(lock) {
+                lock.withLock {
                     if (!end) {
-                        lock.wait()
+                        condition.await()
                     }
                 }
+                //                synchronized(lock) {
+                //                    if (!end) {
+                //                        lock.wait()
+                //                    }
+                //                }
             } catch (ignored: InterruptedException) {
                 // Ignore exception.
             }
