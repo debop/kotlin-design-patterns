@@ -2,6 +2,7 @@ package io.kommons.designpatterns.producer.consumer
 
 import io.kommons.logging.KLogging
 import io.mockk.clearMocks
+import io.mockk.confirmVerified
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.BeforeEach
@@ -14,7 +15,7 @@ class ProducerTest {
 
     companion object: KLogging()
 
-    val itemQueue = mockk<ItemQueue>(relaxUnitFun = true)
+    private val itemQueue = mockk<ItemQueue>(relaxUnitFun = true)
 
     @BeforeEach
     fun setup() {
@@ -30,6 +31,7 @@ class ProducerTest {
             producer.produce()
 
             verify(exactly = 1) { itemQueue.put(any()) }
+            confirmVerified(itemQueue)
         }
     }
 }

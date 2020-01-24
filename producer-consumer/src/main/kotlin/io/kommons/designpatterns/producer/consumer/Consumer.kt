@@ -3,7 +3,7 @@ package io.kommons.designpatterns.producer.consumer
 import io.kommons.logging.KLogging
 import io.kommons.logging.info
 
-class Consumer(val name: String, val queue: ItemQueue) {
+class Consumer(private val name: String, private val queue: ItemQueue) {
 
     companion object: KLogging()
 

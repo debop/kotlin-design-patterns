@@ -1,3 +1,3 @@
 package io.kommons.designpatterns.producer.consumer
 
-data class Item(val producer: String, val id: Int)
+data class Item(val id: Int, val producer: String)

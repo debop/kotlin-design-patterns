@@ -2,6 +2,7 @@ package io.kommons.designpatterns.producer.consumer
 
 import io.kommons.logging.KLogging
 import io.mockk.clearMocks
+import io.mockk.confirmVerified
 import io.mockk.spyk
 import io.mockk.verify
 import org.junit.jupiter.api.BeforeEach
@@ -24,7 +25,7 @@ class ConsumerTest {
     fun `consume items`() {
 
         repeat(ITEM_COUNT) {
-            itemQueue.put(Item("producer", it))
+            itemQueue.put(Item(it, "producer"))
         }
 
         val consumer = Consumer("consumer", itemQueue)
@@ -33,6 +34,8 @@ class ConsumerTest {
             consumer.consume()
         }
 
+        verify(exactly = ITEM_COUNT) { itemQueue.put(any()) }
         verify(exactly = ITEM_COUNT) { itemQueue.take() }
+        confirmVerified(itemQueue)
     }
 }
