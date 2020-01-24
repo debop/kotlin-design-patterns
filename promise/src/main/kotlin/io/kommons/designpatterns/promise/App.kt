@@ -3,6 +3,7 @@ package io.kommons.designpatterns.promise
 import io.kommons.logging.KotlinLogging
 import io.kommons.logging.error
 import io.kommons.logging.info
+import io.kommons.logging.trace
 import java.net.URL
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
@@ -54,11 +55,13 @@ private fun download(urlString: String): Promise<String> =
         }
 
 private fun stop() {
+    log.trace { "Stopping ..." }
     stopLatch.await()
     executor.shutdownNow()
 }
 
 private fun taskCompleted() {
+    log.trace { "Task completed." }
     stopLatch.countDown()
 }
 
