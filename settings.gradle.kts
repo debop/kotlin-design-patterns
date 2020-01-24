@@ -67,6 +67,7 @@ include("guarded-suspension")
 include("lazy-loading")
 
 include("producer-consumer")
+include("promise")
 
 include("singleton")
 include("state")
