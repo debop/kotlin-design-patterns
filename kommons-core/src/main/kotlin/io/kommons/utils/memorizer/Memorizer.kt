@@ -5,11 +5,13 @@ package io.kommons.utils.memorizer
  *
  * @author debop
  */
-interface Memorizer<in T, out R>: (T) -> R {
+interface Memorizer<in T, R>: (T) -> R {
 
     /**
      * 저장된 기존 수행 결과를 clear 합니다.
      */
     fun clear()
+
+    fun put(key: T, value: R)
 
 }

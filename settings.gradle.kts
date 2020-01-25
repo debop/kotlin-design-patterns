@@ -43,6 +43,7 @@ include("converter")
 include("cqrs")
 
 include("data-bus")
+include("data-locality")
 include("data-mapper")
 include("data-transfer-object")
 include("decorator")

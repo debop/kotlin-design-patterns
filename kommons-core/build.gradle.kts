@@ -21,4 +21,6 @@ dependencies {
 
     // Cache2k
     implementation(Libraries.cache2k_core)
+
+    implementation(Libraries.eclipse_collections)
 }

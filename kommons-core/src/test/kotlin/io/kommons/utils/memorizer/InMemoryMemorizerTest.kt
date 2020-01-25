@@ -26,7 +26,10 @@ class InMemoryMemorizerTest: AbstractMemorizerTest() {
 
 open class FactorialProvider {
 
-    protected open val cachedCalc: (Long) -> Long = inMemoryMemorizer { calc(it) }
+    protected open val cachedCalc = inMemoryMemorizer<Long, Long> { calc(it) }.apply {
+        put(0L, 1L)
+        put(1L, 1L)
+    }
 
     fun calc(n: Long): Long {
         return when (n) {
@@ -41,7 +44,11 @@ open class FibonacciProvider {
 
     companion object: KLogging()
 
-    protected open val cachedCalc = inMemoryMemorizer<Long, Long> { calc(it) }
+    protected open val cachedCalc = inMemoryMemorizer<Long, Long> { calc(it) }.apply {
+        put(0, 0L)
+        put(1L, 1L)
+        put(2L, 1L)
+    }
 
     fun calc(n: Long): Long {
         // log.trace { "fibonacci($n)" }

@@ -1,5 +1,7 @@
 package io.kommons.utils.memorizer
 
+import org.eclipse.collections.api.factory.Maps
+
 /**
  * 함수의 실행 결과를 캐시하여, 재 호출 시 캐시된 내용을 제공하도록 합니다.
  *
@@ -14,12 +16,16 @@ fun <T, R> inMemoryMemorizer(evaluator: (T) -> R): Memorizer<T, R> =
  *
  * @property evaluator 실제 수행할 함수
  */
-class InMemoryMemorizer<in T, out R>(val evaluator: (T) -> R): Memorizer<T, R> {
+class InMemoryMemorizer<in T, R>(private val evaluator: (T) -> R): Memorizer<T, R> {
 
     // 특정 입력값에 대한 결과를 캐시합니다.
     // Java의 ConcurrentHashMap을 사용하면 Deadlock 이 걸립니다.
-    private val resultCache = LinkedHashMap<T, R>()
+    // private val resultCache =  LinkedHashMap<T, R>()
 
+    // Java 9 부터 Java Map의 computeIfAbsent에 버그가 있다.
+    private val resultCache = Maps.mutable.of<T, R>()
+
+    @Synchronized
     override fun invoke(input: T): R {
         return resultCache.computeIfAbsent(input, evaluator)
     }
@@ -29,5 +35,9 @@ class InMemoryMemorizer<in T, out R>(val evaluator: (T) -> R): Memorizer<T, R> {
      */
     override fun clear() {
         resultCache.clear()
+    }
+
+    override fun put(key: T, value: R) {
+        resultCache[key] = value
     }
 }

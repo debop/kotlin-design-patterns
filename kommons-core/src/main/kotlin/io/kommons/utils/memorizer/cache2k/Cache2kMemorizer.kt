@@ -17,8 +17,8 @@ fun <T, R> Cache<T, R>.memorizer(evaluator: (T) -> R): Memorizer<T, R> = Cache2k
  *
  * @author debop
  */
-class Cache2kMemorizer<in T, out R>(private val cache: Cache<T, R>,
-                                    private val evaluator: (T) -> R): Memorizer<T, R> {
+class Cache2kMemorizer<in T, R>(private val cache: Cache<T, R>,
+                                private val evaluator: (T) -> R): Memorizer<T, R> {
 
 
     override fun invoke(key: T): R {
@@ -31,5 +31,9 @@ class Cache2kMemorizer<in T, out R>(private val cache: Cache<T, R>,
 
     override fun clear() {
         cache.clear()
+    }
+
+    override fun put(key: T, value: R) {
+        cache.put(key, value)
     }
 }
