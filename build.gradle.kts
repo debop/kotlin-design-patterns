@@ -345,7 +345,7 @@ subprojects {
         }
 
         api(Libraries.slf4j_api)
-        testApi(Libraries.logback)
+        api(Libraries.logback)
         testApi(Libraries.zerolog_core)
         testApi(Libraries.zerolog_slf4j)
 

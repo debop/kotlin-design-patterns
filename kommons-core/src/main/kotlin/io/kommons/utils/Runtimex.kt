@@ -43,6 +43,7 @@ object Runtimex: KLogging() {
 
 
     private const val TWO_GIGA = 2_000_000_000
+
     @JvmStatic
     fun compatMemory() {
         try {
@@ -96,21 +97,18 @@ object Runtimex: KLogging() {
 
     /**
      * Consumes a stream
-     * @author debop
-     * @since 2017. 2. 26.
      */
     class StreamGobbler @JvmOverloads constructor(val input: InputStream,
                                                   val output: OutputStream? = null,
-                                                  val prefix: String? = null): Thread() {
+                                                  prefix: String? = null): Thread() {
 
         private val lock = ReentrantLock()
         private val condition = lock.newCondition()
 
-        // private val lock = Object()
         private var end = false
 
-        val prefixBytes: ByteArray get() = prefix?.let { prefix.toByteArray() } ?: ByteArray(0)
-        val newLineBytes: ByteArray get() = System.getProperty("line.separator").toByteArray()
+        private val prefixBytes: ByteArray = prefix?.toByteArray() ?: ByteArray(0)
+        private val newLineBytes: ByteArray = System.getProperty("line.separator").toByteArray()
 
         override fun run() {
             InputStreamReader(input).use { isr ->
@@ -132,10 +130,6 @@ object Runtimex: KLogging() {
                 end = true
                 condition.signalAll()
             }
-            //            synchronized(lock) {
-            //                end = true
-            //                lock.notifyAll()
-            //            }
         }
 
         /**
@@ -148,11 +142,6 @@ object Runtimex: KLogging() {
                         condition.await()
                     }
                 }
-                //                synchronized(lock) {
-                //                    if (!end) {
-                //                        lock.wait()
-                //                    }
-                //                }
             } catch (ignored: InterruptedException) {
                 // Ignore exception.
             }
