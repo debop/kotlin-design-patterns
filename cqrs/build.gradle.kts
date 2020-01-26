@@ -34,8 +34,9 @@ dependencies {
 
     api(Libraries.querydsl_jpa)
 
-    kapt(Libraries.querydsl_apt + ":jpa")
-    kaptTest(Libraries.querydsl_apt + ":jpa")
+    // Java 9+ 에서 kapt에 버그가 있습니다. 우선 QueryDSL을 사용하지 않으므로, 막았습니다.
+    //    kapt(Libraries.querydsl_apt + ":jpa")
+    //    kaptTest(Libraries.querydsl_apt + ":jpa")
 
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     implementation("org.springframework.data:spring-data-jpa")
