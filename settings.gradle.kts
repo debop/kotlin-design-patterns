@@ -71,6 +71,7 @@ include("producer-consumer")
 include("promise")
 
 include("semaphore")
+include("sharding")
 include("singleton")
 include("state")
 include("step-builder")
