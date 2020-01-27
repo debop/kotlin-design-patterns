@@ -85,4 +85,6 @@ include("template-method")
 include("thread-pool")
 include("throttling")
 
+include("update-method")
+
 include("visitor")
