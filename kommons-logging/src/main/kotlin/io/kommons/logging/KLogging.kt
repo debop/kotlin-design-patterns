@@ -10,6 +10,6 @@ import org.slf4j.Logger
  */
 open class KLogging {
 
-    val log: Logger by lazy { KLoggerFactory.logger(this) }
+    val log: Logger = KLoggerFactory.logger(this.javaClass)
 
 }

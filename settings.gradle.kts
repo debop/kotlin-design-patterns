@@ -70,6 +70,8 @@ include("lazy-loading")
 include("producer-consumer")
 include("promise")
 
+include("queue-load-leveling")
+
 include("semaphore")
 include("sharding")
 include("singleton")
