@@ -67,6 +67,7 @@ include("guarded-suspension")
 
 include("lazy-loading")
 
+include("poison-pill")
 include("producer-consumer")
 include("promise")
 

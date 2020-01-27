@@ -89,7 +89,7 @@ object Versions {
     const val assertj_core = "3.12.2"
     const val mockk = "1.9.3"
     const val mockito = "3.2.4"
-    const val testcontainers = "1.12.4"
+    const val testcontainers = "1.12.5"
 }
 
 object Libraries {
