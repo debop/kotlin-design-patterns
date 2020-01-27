@@ -82,6 +82,7 @@ include("strategy")
 include("subclass-sandbox")
 
 include("template-method")
+include("thread-pool")
 include("throttling")
 
 include("visitor")
