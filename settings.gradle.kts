@@ -49,6 +49,7 @@ include("data-transfer-object")
 include("decorator")
 include("delegation")
 include("dirty-flag")
+include("double-buffer")
 
 include("event-aggregator")
 include("event-asynchronous")
