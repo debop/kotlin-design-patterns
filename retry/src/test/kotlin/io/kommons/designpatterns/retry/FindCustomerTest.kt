@@ -1,5 +1,6 @@
 package io.kommons.designpatterns.retry
 
+import io.github.resilience4j.decorators.Decorators
 import io.github.resilience4j.retry.Retry
 import io.github.resilience4j.retry.RetryConfig
 import io.kommons.logging.KLogging
@@ -57,8 +58,16 @@ class FindCustomerTest {
                 log.warn("Error. retry=${it.numberOfRetryAttempts}")
             }
         }
+
         val op = FindCustomer("123", CustomerNotFoundException("not found"))
-        val customerId = retry.executeSupplier { op.perform() }
+
+        // Use Decorators
+        val decorated = Decorators
+            .ofSupplier { op.perform() }
+            .withRetry(retry)
+            .decorate()
+
+        val customerId = decorated.get()
         customerId shouldEqual "123"
     }
 }
