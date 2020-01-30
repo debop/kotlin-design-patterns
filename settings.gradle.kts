@@ -68,6 +68,7 @@ include("guarded-suspension")
 
 include("lazy-loading")
 
+include("retry")
 include("role-object")
 
 include("poison-pill")
