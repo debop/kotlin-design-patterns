@@ -77,6 +77,8 @@ include("promise")
 
 include("queue-load-leveling")
 
+include("resource-acquisition-is-initialization")
+
 include("semaphore")
 include("sharding")
 include("singleton")
