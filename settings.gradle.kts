@@ -82,6 +82,7 @@ include("queue-load-leveling")
 include("resource-acquisition-is-initialization")
 
 include("semaphore")
+include("servant")
 include("sharding")
 include("singleton")
 include("specification")
