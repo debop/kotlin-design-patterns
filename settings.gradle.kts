@@ -66,6 +66,8 @@ include("feature-toggle")
 
 include("guarded-suspension")
 
+include("interpreter")
+
 include("lazy-loading")
 
 include("retry")
