@@ -83,6 +83,7 @@ include("resource-acquisition-is-initialization")
 
 include("semaphore")
 include("servant")
+include("service-locator")
 include("sharding")
 include("singleton")
 include("specification")
