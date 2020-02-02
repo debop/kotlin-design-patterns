@@ -99,4 +99,5 @@ include("tolerant-reader")
 
 include("update-method")
 
+include("value-object")
 include("visitor")
