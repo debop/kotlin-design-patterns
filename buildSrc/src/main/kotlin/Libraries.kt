@@ -8,7 +8,7 @@ object BuildPlugins {
         const val protobuf = "0.8.10"
         const val avro = "0.17.0"
         const val jarTest = "1.0.1"
-        const val spring_boot = "2.2.2.RELEASE"
+        const val spring_boot = "2.2.5.RELEASE"
     }
 
     const val detekt = "io.gitlab.arturbosch.detekt"
@@ -28,8 +28,8 @@ object BuildPlugins {
 
 object Versions {
 
-    const val kotlin = "1.3.61"
-    const val kotlinx_coroutines = "1.3.3"
+    const val kotlin = "1.3.70"
+    const val kotlinx_coroutines = "1.3.4"
     const val kotlinx_io = "0.1.16"
     const val ktor = "1.2.6"
     const val arrow = "0.10.4"
@@ -78,18 +78,18 @@ object Versions {
     const val cassandra = "4.3.0"
     const val elasticsearch = "7.5.1"
 
-    const val eclipse_collections = "10.1.0"
+    const val eclipse_collections = "10.2.0"
 
     const val koin = "2.0.1"
 
     const val byte_buddy = "1.10.6"
 
-    const val junit_jupiter = "5.5.2"
-    const val junit_platform = "1.5.2"
+    const val junit_jupiter = "5.6.0"
+    const val junit_platform = "1.6.0"
     const val assertj_core = "3.12.2"
     const val mockk = "1.9.3"
     const val mockito = "3.2.4"
-    const val testcontainers = "1.12.5"
+    const val testcontainers = "1.13.0"
 }
 
 object Libraries {
