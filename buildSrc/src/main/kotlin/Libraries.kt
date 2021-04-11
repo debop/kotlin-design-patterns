@@ -8,7 +8,7 @@ object BuildPlugins {
         const val protobuf = "0.8.10"
         const val avro = "0.17.0"
         const val jarTest = "1.0.1"
-        const val spring_boot = "2.2.6.RELEASE"
+        const val spring_boot = "2.4.2"
     }
 
     const val detekt = "io.gitlab.arturbosch.detekt"
@@ -28,17 +28,17 @@ object BuildPlugins {
 
 object Versions {
 
-    const val kotlin = "1.3.71"
-    const val kotlinx_coroutines = "1.3.5"
+    const val kotlin = "1.4.32"
+    const val kotlinx_coroutines = "1.4.2"
     const val kotlinx_io = "0.1.16"
     const val ktor = "1.2.6"
     const val arrow = "0.10.4"
 
     const val spring_boot = BuildPlugins.Versions.spring_boot
-    const val resilience4j = "1.3.1"
+    const val resilience4j = "1.7.0"
     const val hystrix = "1.5.12"
     const val vavr = "0.10.0"
-    const val netty = "4.1.43.Final"
+    const val netty = "4.1.58.Final"
 
     const val aws = "1.11.667"
 
@@ -52,7 +52,7 @@ object Versions {
     const val jasync_sql = "1.0.12"
 
     const val reactor = "3.3.0.RELEASE"
-    const val jackson = "2.10.3"
+    const val jackson = "2.12.1"
 
     const val random_beans = "3.9.0"
     const val reflectasm = "1.11.9"
@@ -65,15 +65,15 @@ object Versions {
     const val querydsl = "4.2.1"
     const val jooq = "3.12.3"
 
-    const val slf4j = "1.7.29"
+    const val slf4j = "1.7.30"
     const val logback = "1.2.3"
     const val zerolog = "0.30.0"
 
-    const val micrometer = "1.3.2"
+    const val micrometer = "1.6.5"
     const val metrics = "4.1.2"
     const val cache2k = "1.2.4.Final"
 
-    const val ignite = "2.7.6"
+    const val ignite = "2.8.1"
     const val hazelcast = "3.12.4"
     const val cassandra = "4.3.0"
     const val elasticsearch = "7.5.1"
@@ -84,12 +84,12 @@ object Versions {
 
     const val byte_buddy = "1.10.6"
 
-    const val junit_jupiter = "5.6.1"
-    const val junit_platform = "1.6.1"
+    const val junit_jupiter = "5.7.1"
+    const val junit_platform = "1.7.1"
     const val assertj_core = "3.12.2"
-    const val mockk = "1.9.3"
+    const val mockk = "1.10.6"
     const val mockito = "3.2.4"
-    const val testcontainers = "1.13.0"
+    const val testcontainers = "1.15.2"
 }
 
 object Libraries {
@@ -532,7 +532,7 @@ object Libraries {
     const val junit_platform_launcher = "org.junit.platform:junit-platform-launcher:${Versions.junit_platform}"
     const val junit_platform_suite_api = "org.junit.platform:junit-platform-suite-api:${Versions.junit_platform}"
 
-    const val kluent = "org.amshove.kluent:kluent:1.58"
+    const val kluent = "org.amshove.kluent:kluent:1.65"
     const val assertj_core: String = "org.assertj:assertj-core:3.12.2"
     const val mockk: String = "io.mockk:mockk:${Versions.mockk}"
     const val mockito_core = "org.mockito:mockito-core:${Versions.mockito}"

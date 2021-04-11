@@ -35,7 +35,7 @@ class ElassandraServer @JvmOverloads constructor(
 
     }
 
-    override val host: String get() = containerIpAddress
+//    override val host: String get() = containerIpAddress
     override val port: Int get() = getMappedPort(CQL_PORT)
 
     val elasticsearchPort: Int get() = getMappedPort(ELASTICSEARCH_PORT)

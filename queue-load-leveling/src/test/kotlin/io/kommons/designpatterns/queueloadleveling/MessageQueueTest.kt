@@ -1,6 +1,6 @@
 package io.kommons.designpatterns.queueloadleveling
 
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 class MessageQueueTest {
@@ -11,8 +11,8 @@ class MessageQueueTest {
         val expected = Message("Test Message")
 
         val msgQueue = MessageQueue()
-        msgQueue.submitMsg(expected)
+        msgQueue.submit(expected)
 
-        msgQueue.retrieveMsg() shouldEqual expected
+        msgQueue.retrieve() shouldBeEqualTo expected
     }
 }

@@ -21,7 +21,7 @@ class InfluxDBServer(tag: String = VERSION,
         const val INFLUXDB_NAME = "influxdb"
     }
 
-    override val host: String by lazy { this.containerIpAddress }
+//    override val host: String by lazy { this.containerIpAddress }
     override val port: Int by lazy { getMappedPort(INFLUXDB_PORT) }
 
     /**

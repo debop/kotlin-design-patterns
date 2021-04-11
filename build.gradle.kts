@@ -49,9 +49,9 @@ subprojects {
     }
 
     tasks.withType<KotlinCompile> {
-        sourceCompatibility = "1.8"
+        sourceCompatibility = JavaVersion.VERSION_11.toString()
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = JavaVersion.VERSION_11.toString()
             freeCompilerArgs = listOf("-Xjsr305=strict",
                                       "-Xjvm-default=enable",
                                       "-Xinline-classes",

@@ -22,7 +22,7 @@ class CassandraServer @JvmOverloads constructor(
         const val DEFAULT_TAG = "3.11.2"
     }
 
-    override val host: String get() = containerIpAddress
+//    override val host: String get() = containerIpAddress
     override val port: Int get() = getMappedPort(CQL_PORT)
 
     init {

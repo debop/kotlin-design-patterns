@@ -27,7 +27,7 @@ class KafkaServer @JvmOverloads constructor(tag: String = DEFAULT_TAG,
         const val KAFKA_NAME = "kafka"
     }
 
-    override val host: String get() = bootstrapServers
+//    override val host: String get() = bootstrapServers
     override val port: Int get() = firstMappedPort
 
     init {

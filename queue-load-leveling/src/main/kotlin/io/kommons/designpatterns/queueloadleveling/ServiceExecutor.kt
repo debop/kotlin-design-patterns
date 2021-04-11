@@ -10,7 +10,7 @@ class ServiceExecutor(private val queue: MessageQueue): () -> Unit {
     override fun invoke() {
         try {
             while (!Thread.currentThread().isInterrupted) {
-                val msg = queue.retrieveMsg()
+                val msg = queue.retrieve()
 
                 msg?.let { log.info { "$it is sserved" } }
                 ?: log.info { "Service Executor: Waiting for Messages to serve .." }

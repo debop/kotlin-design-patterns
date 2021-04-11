@@ -10,9 +10,9 @@ class MessageQueue {
 
     private val queue: BlockingQueue<Message> = ArrayBlockingQueue(1024)
 
-    fun submitMsg(msg: Message) {
+    fun submit(msg: Message) {
         queue.add(msg)
     }
 
-    fun retrieveMsg(): Message? = queue.poll()
+    fun retrieve(): Message? = queue.poll()
 }

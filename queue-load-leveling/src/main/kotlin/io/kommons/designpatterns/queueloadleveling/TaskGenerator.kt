@@ -11,7 +11,7 @@ class TaskGenerator(private val msgQueue: MessageQueue,
 
     override fun submit(msg: Message) {
         try {
-            this.msgQueue.submitMsg(msg)
+            this.msgQueue.submit(msg)
         } catch (e: Exception) {
             log.error(e) { "Fail to submit message." }
         }

@@ -16,10 +16,6 @@ import org.testcontainers.containers.GenericContainer
 interface GenericServer: ContainerState {
 
     @JvmDefault
-    val host: String
-        get() = containerIpAddress
-
-    @JvmDefault
     val port: Int
         get() = firstMappedPort
 

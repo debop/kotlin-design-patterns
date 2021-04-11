@@ -5,7 +5,7 @@ import io.kommons.designpatterns.delegation.printers.EpsonPrinter
 import io.kommons.designpatterns.delegation.printers.HpPrinter
 import io.kommons.junit.jupiter.output.InMemoryAppender
 import io.kommons.logging.KLogging
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -36,7 +36,7 @@ class DelegateTest {
         val printerController = PrinterController(CanonPrinter())
         printerController.print(MESSAGE)
 
-        appender.lastMessage shouldEqual "Canon Printer : $MESSAGE"
+        appender.lastMessage shouldBeEqualTo "Canon Printer : $MESSAGE"
     }
 
     @Test
@@ -44,7 +44,7 @@ class DelegateTest {
         val printerController = PrinterController(EpsonPrinter())
         printerController.print(MESSAGE)
 
-        appender.lastMessage shouldEqual "Epson Printer : $MESSAGE"
+        appender.lastMessage shouldBeEqualTo "Epson Printer : $MESSAGE"
     }
 
     @Test
@@ -52,7 +52,7 @@ class DelegateTest {
         val printerController = PrinterController(HpPrinter())
         printerController.print(MESSAGE)
 
-        appender.lastMessage shouldEqual "HP Printer : $MESSAGE"
+        appender.lastMessage shouldBeEqualTo "HP Printer : $MESSAGE"
     }
 
 }

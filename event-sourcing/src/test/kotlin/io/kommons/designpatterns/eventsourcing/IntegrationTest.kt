@@ -7,7 +7,7 @@ import io.kommons.designpatterns.eventsourcing.event.MoneyDepositEvent
 import io.kommons.designpatterns.eventsourcing.event.MoneyTransferEvent
 import io.kommons.designpatterns.eventsourcing.processor.DomainEventProcessor
 import io.kommons.designpatterns.eventsourcing.state.AccountAggregate
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.lang.System.currentTimeMillis
@@ -49,7 +49,7 @@ class IntegrationTest {
         val accountOfDaenerysAfterShutdown = AccountAggregate.get(ACCOUNT_OF_DAENERYS)!!
         val accountOfJonAfterShutdown = AccountAggregate.get(ACCOUNT_OF_JON)!!
 
-        accountOfDaenerysAfterShutdown.money shouldEqual accountOfDaenerysBeforeShutdown.money
-        accountOfJonAfterShutdown.money shouldEqual accountOfJonBeforeShutdown.money
+        accountOfDaenerysAfterShutdown.money shouldBeEqualTo accountOfDaenerysBeforeShutdown.money
+        accountOfJonAfterShutdown.money shouldBeEqualTo accountOfJonBeforeShutdown.money
     }
 }
